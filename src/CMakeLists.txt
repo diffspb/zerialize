@@ -6,6 +6,6 @@ set(${PROJECT_NAME}_SOURCE_FILES
     Serialize.cpp
 )
 
-add_library(${PROJECT_NAME} OBJECT ${${PROJECT_NAME}_SOURCE_FILES})
+add_library(${PROJECT_NAME} STATIC ${${PROJECT_NAME}_SOURCE_FILES})
 target_include_directories(${PROJECT_NAME} PUBLIC .)
-#target_link_libraries(${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME})
