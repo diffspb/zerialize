@@ -1,0 +1,29 @@
+dist: trusty
+language: cpp
+
+script:
+  - mkdir build && cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CXX_COMPILER=$COMPILER
+  - cmake --build .
+  - ./tests/zerialize_tests
+
+env:
+  - BUID_TYPE=Release COMPILER=g++-4.9
+  - BUID_TYPE=Release COMPILER=g++-5
+  - BUID_TYPE=Release COMPILER=g++-6
+  - BUID_TYPE=Release COMPILER=clang++-3.9
+  - BUID_TYPE=Debug COMPILER=g++-4.9
+  - BUID_TYPE=Debug COMPILER=g++-5
+  - BUID_TYPE=Debug COMPILER=g++-6
+  - BUID_TYPE=Debug COMPILER=clang++-3.9
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-trusty-3.9
+    packages:
+    - g++-4.9
+    - g++-5
+    - g++-6
+    - clang-3.9
